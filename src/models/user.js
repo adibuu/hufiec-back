@@ -16,19 +16,15 @@ const userSchema = new mongoose.Schema({
     required: true,
   },
   permissions: {
-    full: {
-      type: Boolean,
-      default: false,
-    },
-    needToAccept: {
-      type: Boolean,
-      default: true,
-    },
+    type: String,
+    enum: ["full", "needToAccept"],
+    default: "needToAccept",
+    required: true,
   },
   scoutTeam: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Team",
-    required: true,
+    required: false,
   },
 });
 
