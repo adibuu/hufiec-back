@@ -24,6 +24,10 @@ const postSchema = new mongoose.Schema({
     ref: "User",
     required: true,
   },
+  publish: {
+    type: Boolean,
+    default: true,
+  },
   dateOfPublication: { type: Date, default: Date.now },
   dateOfExpiration: { type: Date, default: Date.now() + 365 * 24 * 60 * 60000 },
 });
