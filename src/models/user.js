@@ -7,7 +7,7 @@ const userSchema = new mongoose.Schema({
   },
   encryptedPassword: {
     type: String,
-    required: true,
+    required: [true, "Password is required"],
   },
   role: {
     type: String,
