@@ -7,6 +7,7 @@ const Post = require("../models/post");
 const Team = require("../models/team");
 const User = require("../models/user");
 const { after, before } = require("./actions/passwordActions");
+const { isAdmin, canEditPost, canEditTeam } = require("./utils/accessCheck");
 
 const sidebarGroups = {
   user: {
@@ -25,6 +26,7 @@ const adminBro = new AdminBro({
     {
       resource: User,
       options: {
+        listProperties: ["email", "role", "scoutTeam"],
         navigation: sidebarGroups.user,
         properties: {
           encryptedPassword: {
@@ -39,13 +41,24 @@ const adminBro = new AdminBro({
               show: false,
             },
           },
+          _id: {
+            isVisible: {
+              list: false,
+            },
+          },
         },
         actions: {
           new: {
             after: after,
             before: before,
+            isAccessible: isAdmin,
           },
-          edit: { after: after, before: before },
+          edit: { after: after, before: before, isAccessible: isAdmin },
+          list: { isAccessible: isAdmin },
+          search: { isAccessible: isAdmin },
+          show: { isAccessible: isAdmin },
+          delete: { isAccessible: isAdmin },
+          bulkDelete: { isAccessible: isAdmin },
         },
       },
     },
@@ -53,14 +66,62 @@ const adminBro = new AdminBro({
       resource: Team,
       options: {
         navigation: sidebarGroups.team,
-        properties: { description: { type: "richtext" } },
+        properties: {
+          description: { type: "richtext" },
+          _id: {
+            isVisible: {
+              list: false,
+            },
+          },
+        },
+        actions: {
+          new: { isAccessible: isAdmin },
+          edit: { isAccessible: canEditTeam },
+          delete: { isAccessible: isAdmin },
+          bulkDelete: { isAccessible: isAdmin },
+        },
       },
     },
     {
       resource: Post,
       options: {
         navigation: sidebarGroups.post,
+        sort: {
+          sortBy: "createdAt",
+          direction: "desc",
+        },
         properties: {
+          author: {
+            isVisible: {
+              edit: false,
+              show: true,
+              list: true,
+              filter: true,
+            },
+          },
+          _id: {
+            isVisible: {
+              list: false,
+            },
+          },
+          createdAt: {
+            isVisible: {
+              list: false,
+              show: false,
+              filter: true,
+              edit: false,
+              new: false,
+            },
+          },
+          updatedAt: {
+            isVisible: {
+              list: false,
+              show: false,
+              filter: true,
+              edit: false,
+              new: false,
+            },
+          },
           content: { type: "richtext" },
           preview: {
             type: "richtext",
@@ -69,24 +130,104 @@ const adminBro = new AdminBro({
             },
           },
         },
+        actions: {
+          edit: { isAccessible: canEditPost },
+          delete: { isAccessible: canEditPost },
+          bulkDelete: { isAccessible: canEditPost },
+          new: {
+            before: async (request, { currentAdmin }) => {
+              request.payload = {
+                ...request.payload,
+                author: currentAdmin._id,
+              };
+              return request;
+            },
+          },
+        },
       },
     },
     {
       resource: Contact,
-      options: { navigation: sidebarGroups.contact },
+      options: {
+        navigation: sidebarGroups.contact,
+        properties: {
+          _id: {
+            isVisible: {
+              list: false,
+            },
+          },
+        },
+        actions: {
+          list: { isAccessible: isAdmin },
+          show: { isAccessible: isAdmin },
+          new: { isAccessible: isAdmin },
+          edit: { isAccessible: isAdmin },
+          delete: { isAccessible: isAdmin },
+          bulkDelete: { isAccessible: isAdmin },
+        },
+      },
     },
     {
       resource: Document,
-      options: { navigation: sidebarGroups.document },
+      options: {
+        navigation: sidebarGroups.document,
+        properties: {
+          _id: {
+            isVisible: {
+              list: false,
+            },
+          },
+        },
+        actions: {
+          list: { isAccessible: isAdmin },
+          show: { isAccessible: isAdmin },
+          new: { isAccessible: isAdmin },
+          edit: { isAccessible: isAdmin },
+          delete: { isAccessible: isAdmin },
+          bulkDelete: { isAccessible: isAdmin },
+        },
+      },
     },
     {
       resource: Gallery,
-      options: { navigation: sidebarGroups.gallery },
+      options: {
+        navigation: sidebarGroups.gallery,
+        properties: {
+          _id: {
+            isVisible: {
+              list: false,
+            },
+          },
+        },
+        actions: {
+          list: { isAccessible: isAdmin },
+          show: { isAccessible: isAdmin },
+          new: { isAccessible: isAdmin },
+          edit: { isAccessible: isAdmin },
+          delete: { isAccessible: isAdmin },
+          bulkDelete: { isAccessible: isAdmin },
+        },
+      },
     },
     {
       resource: InfoModal,
       options: {
         navigation: sidebarGroups.infoModal,
+        properties: {
+          _id: {
+            isVisible: {
+              list: false,
+            },
+          },
+        },
+        actions: {
+          list: { isAccessible: isAdmin },
+          show: { isAccessible: isAdmin },
+          new: { isAccessible: isAdmin },
+          edit: { isAccessible: isAdmin },
+          delete: { isAccessible: isAdmin },
+          bulkDelete: { isAccessible: isAdmin },
+        },
         properties: {
           content: {
             type: "richtext",

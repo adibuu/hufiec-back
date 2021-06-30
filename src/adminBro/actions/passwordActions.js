@@ -34,6 +34,19 @@ const before = async (request) => {
         },
       });
     }
+    if (request.payload.role === "admin") {
+      request.payload = {
+        ...request.payload,
+        editingPermissions: {
+          postsMustBeApprovedByAdmin: false,
+          team: true,
+          contact: true,
+          document: true,
+          gallery: true,
+          infoModal: true,
+        },
+      };
+    }
     request.payload = {
       ...request.payload,
       encryptedPassword: await bcrypt.hash(request.payload.password, 12),

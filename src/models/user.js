@@ -15,11 +15,31 @@ const userSchema = new mongoose.Schema({
     default: "restricted",
     required: true,
   },
-  permissions: {
-    type: String,
-    enum: ["full", "needToAccept"],
-    default: "needToAccept",
-    required: true,
+  editingPermissions: {
+    postsMustBeApprovedByAdmin: {
+      type: Boolean,
+      default: true,
+    },
+    team: {
+      type: Boolean,
+      default: false,
+    },
+    contact: {
+      type: Boolean,
+      default: false,
+    },
+    document: {
+      type: Boolean,
+      default: false,
+    },
+    gallery: {
+      type: Boolean,
+      default: false,
+    },
+    infoModal: {
+      type: Boolean,
+      default: false,
+    },
   },
   scoutTeam: {
     type: mongoose.Schema.Types.ObjectId,

@@ -1,35 +1,41 @@
 const mongoose = require("mongoose");
 
-const postSchema = new mongoose.Schema({
-  content: {
-    type: String,
-    required: true,
-  },
-  preview: {
-    type: String,
-    required: true,
-  },
-  imageURL: {
-    type: String,
-    required: false,
-  },
-  filesURL: [
-    {
+const postSchema = new mongoose.Schema(
+  {
+    content: {
+      type: String,
+      required: true,
+    },
+    preview: {
+      type: String,
+      required: true,
+    },
+    imageURL: {
       type: String,
       required: false,
     },
-  ],
-  author: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
-    required: true,
+    filesURL: [
+      {
+        type: String,
+        required: false,
+      },
+    ],
+    author: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
+    publish: {
+      type: Boolean,
+      default: false,
+    },
+    dateOfPublication: { type: Date, default: Date.now },
+    dateOfExpiration: {
+      type: Date,
+      default: Date.now() + 365 * 24 * 60 * 60000,
+    },
   },
-  publish: {
-    type: Boolean,
-    default: true,
-  },
-  dateOfPublication: { type: Date, default: Date.now },
-  dateOfExpiration: { type: Date, default: Date.now() + 365 * 24 * 60 * 60000 },
-});
+  { timestamps: true }
+);
 
 module.exports = mongoose.model("Post", postSchema);
