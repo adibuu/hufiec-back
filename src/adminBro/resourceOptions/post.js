@@ -16,6 +16,22 @@ const postOptions = {
         filter: true,
       },
     },
+    imageURL: {
+      isVisible: {
+        edit: true,
+        show: true,
+        list: false,
+        filter: true,
+      },
+    },
+    filesURL: {
+      isVisible: {
+        edit: true,
+        show: true,
+        list: false,
+        filter: true,
+      },
+    },
     _id: {
       isVisible: {
         list: false,

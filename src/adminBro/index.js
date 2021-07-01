@@ -14,6 +14,7 @@ const documentOptions = require("./resourceOptions/document");
 const galleryOptions = require("./resourceOptions/gallery");
 const infoModalOptions = require("./resourceOptions/infoModal");
 const branding = require("./config/branding");
+const i18nOptions = require("./config/i18nOptions");
 
 const adminBro = new AdminBro({
   resources: [
@@ -52,6 +53,7 @@ const adminBro = new AdminBro({
   dashboard: {
     component: AdminBro.bundle("./components/dashboard.jsx"),
   },
+  locale: i18nOptions,
 });
 
 module.exports = adminBro;
