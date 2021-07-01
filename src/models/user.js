@@ -7,7 +7,7 @@ const userSchema = new mongoose.Schema({
   },
   encryptedPassword: {
     type: String,
-    required: true,
+    required: [true, "Password is required"],
   },
   role: {
     type: String,
@@ -15,20 +15,36 @@ const userSchema = new mongoose.Schema({
     default: "restricted",
     required: true,
   },
-  permissions: {
-    full: {
+  editingPermissions: {
+    postsMustBeApprovedByAdmin: {
+      type: Boolean,
+      default: true,
+    },
+    team: {
       type: Boolean,
       default: false,
     },
-    needToAccept: {
+    contact: {
       type: Boolean,
-      default: true,
+      default: false,
+    },
+    document: {
+      type: Boolean,
+      default: false,
+    },
+    gallery: {
+      type: Boolean,
+      default: false,
+    },
+    infoModal: {
+      type: Boolean,
+      default: false,
     },
   },
   scoutTeam: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Team",
-    required: true,
+    required: false,
   },
 });
 
