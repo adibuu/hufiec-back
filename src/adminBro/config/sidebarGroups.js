@@ -1,4 +1,4 @@
-exports.sidebarGroups = {
+const sidebarGroups = {
   user: {
     icon: "User",
   },
@@ -9,3 +9,5 @@ exports.sidebarGroups = {
   document: { icon: "Document" },
   contact: { icon: "Phone" },
 };
+
+module.exports = sidebarGroups;
