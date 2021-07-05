@@ -45,9 +45,22 @@ const routerAdminBro = AdminBroExpress.buildAuthenticatedRouter(
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+const contactRouter = require("./routers/contact");
+const documentRouter = require("./routers/document");
+const galleryRouter = require("./routers/gallery");
+const infoModalRouter = require("./routers/infoModal");
+const postRouter = require("./routers/post");
+const teamRouter = require("./routers/team");
+
 app.use(adminBro.options.rootPath, routerAdminBro);
 app.use(helmet());
 app.use(cors());
 app.use(limiter);
+app.use(contactRouter);
+app.use(documentRouter);
+app.use(galleryRouter);
+app.use(infoModalRouter);
+app.use(postRouter);
+app.use(teamRouter);
 
 app.listen(PORT, () => console.log("Server is running on " + PORT));
