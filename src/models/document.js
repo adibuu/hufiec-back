@@ -1,9 +1,16 @@
 const mongoose = require("mongoose");
+const validator = require("validator");
 
 const documentSchema = new mongoose.Schema({
   documentsURL: {
     type: String,
-    required: true,
+    trim: true,
+    required: [true, "Adres URL Dokumentów jest wymagany"],
+    validate(value) {
+      if (!validator.isURL(value)) {
+        throw new Error("Błędny adres URL");
+      }
+    },
   },
 });
 

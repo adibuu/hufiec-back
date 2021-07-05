@@ -1,9 +1,16 @@
 const mongoose = require("mongoose");
+const validator = require("validator");
 
 const gallerySchema = new mongoose.Schema({
   galleryURL: {
     type: String,
-    required: true,
+    trim: true,
+    required: [true, "Adres URL Galerii zdjęć jest wymagany"],
+    validate(value) {
+      if (!validator.isURL(value)) {
+        throw new Error("Błędny adres URL");
+      }
+    },
   },
 });
 
