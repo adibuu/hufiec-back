@@ -3,11 +3,14 @@ const mongoose = require("mongoose");
 const infoModalSchema = new mongoose.Schema({
   content: {
     type: String,
-    required: true,
+    trim: true,
+    required: [true, "Treść jest wymagana"],
+    minLength: [12, "Treść musi mieć zakres od 5 do 200 znaków"],
+    maxLength: [250, "Treść musi mieć zakres od 5 do 200 znaków"],
   },
   show: {
     type: Boolean,
-    default: true,
+    default: false,
   },
   expireAt: {
     type: Date,
