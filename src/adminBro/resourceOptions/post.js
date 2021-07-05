@@ -39,20 +39,11 @@ const postOptions = {
     },
     createdAt: {
       isVisible: {
-        list: false,
-        show: false,
+        list: true,
+        show: true,
         filter: true,
-        edit: false,
-        new: false,
-      },
-    },
-    updatedAt: {
-      isVisible: {
-        list: false,
-        show: false,
-        filter: true,
-        edit: false,
-        new: false,
+        edit: true,
+        new: true,
       },
     },
     content: { type: "richtext" },

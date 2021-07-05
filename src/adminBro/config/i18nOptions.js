@@ -138,8 +138,7 @@ const i18nOptions = {
           filesURL: "Adresy URL do załączanych plików",
           publish:
             "Opublikuj na stronie (działa tylko w przypadku, jeżeli twoje konto nie posiada ograniczeń publikacji treści)",
-          dateOfPublication: "Data publikacji artykułu",
-          dateOfExpiration: "Data wygaśnięcia artykułu",
+          createdAt: "Data publikacji artykułu (domyślnie aktualna data)",
         },
       },
       Contact: {
