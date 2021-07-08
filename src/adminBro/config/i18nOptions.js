@@ -136,8 +136,6 @@ const i18nOptions = {
           preview: "Krótki opis",
           imageURL: "Adres URL do głównego obrazu artykułu",
           filesURL: "Adresy URL do załączanych plików",
-          publish:
-            "Opublikuj na stronie (działa tylko w przypadku, jeżeli twoje konto nie posiada ograniczeń publikacji treści)",
           createdAt: "Data publikacji artykułu (domyślnie aktualna data)",
         },
       },

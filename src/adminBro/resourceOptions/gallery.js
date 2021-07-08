@@ -13,10 +13,10 @@ const galleryOptions = {
   actions: {
     list: { isAccessible: canEditGallery },
     show: { isAccessible: canEditGallery },
-    new: { isAccessible: canEditGallery },
+    new: { isAccessible: false },
     edit: { isAccessible: canEditGallery },
-    delete: { isAccessible: canEditGallery },
-    bulkDelete: { isAccessible: canEditGallery },
+    delete: { isAccessible: false },
+    bulkDelete: { isAccessible: false },
   },
 };
 

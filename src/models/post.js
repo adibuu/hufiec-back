@@ -49,10 +49,6 @@ const postSchema = new mongoose.Schema({
     ref: "User",
     required: true,
   },
-  publish: {
-    type: Boolean,
-    default: false,
-  },
   createdAt: { type: Date, default: Date.now },
 });
 

@@ -13,10 +13,10 @@ const documentOptions = {
   actions: {
     list: { isAccessible: canEditDocument },
     show: { isAccessible: canEditDocument },
-    new: { isAccessible: canEditDocument },
+    new: { isAccessible: false },
     edit: { isAccessible: canEditDocument },
-    delete: { isAccessible: canEditDocument },
-    bulkDelete: { isAccessible: canEditDocument },
+    delete: { isAccessible: false },
+    bulkDelete: { isAccessible: false },
   },
 };
 

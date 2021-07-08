@@ -13,10 +13,10 @@ const infoModalOptions = {
   actions: {
     list: { isAccessible: canEditInfoModal },
     show: { isAccessible: canEditInfoModal },
-    new: { isAccessible: canEditInfoModal },
+    new: { isAccessible: false },
     edit: { isAccessible: canEditInfoModal },
-    delete: { isAccessible: canEditInfoModal },
-    bulkDelete: { isAccessible: canEditInfoModal },
+    delete: { isAccessible: false },
+    bulkDelete: { isAccessible: false },
   },
   properties: {
     content: {
