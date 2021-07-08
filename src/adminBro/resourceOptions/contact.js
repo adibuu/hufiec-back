@@ -13,10 +13,10 @@ const contactOptions = {
   actions: {
     list: { isAccessible: canEditContact },
     show: { isAccessible: canEditContact },
-    new: { isAccessible: canEditContact },
+    new: { isAccessible: false },
     edit: { isAccessible: canEditContact },
-    delete: { isAccessible: canEditContact },
-    bulkDelete: { isAccessible: canEditContact },
+    delete: { isAccessible: false },
+    bulkDelete: { isAccessible: false },
   },
 };
 
