@@ -136,7 +136,7 @@ const i18nOptions = {
           preview: "Krótki opis",
           imageURL: "Adres URL do głównego obrazu artykułu",
           filesURL: "Adresy URL do załączanych plików",
-          createdAt: "Data publikacji artykułu (domyślnie aktualna data)",
+          expireAt: "Data publikacji artykułu (domyślnie aktualna data)",
         },
       },
       Contact: {
