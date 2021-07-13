@@ -4,7 +4,7 @@ const sidebarGroups = require("../config/sidebarGroups");
 const postOptions = {
   navigation: sidebarGroups.post,
   sort: {
-    sortBy: "createdAt",
+    sortBy: "expireAt",
     direction: "desc",
   },
   properties: {
@@ -37,7 +37,7 @@ const postOptions = {
         list: false,
       },
     },
-    createdAt: {
+    expireAt: {
       isVisible: {
         list: true,
         show: true,
