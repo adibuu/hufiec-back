@@ -49,6 +49,10 @@ const postSchema = new mongoose.Schema({
     ref: "User",
     required: true,
   },
+  show: {
+    type: Boolean,
+    default: false,
+  },
   expireAt: {
     type: Date,
     default: Date.now,

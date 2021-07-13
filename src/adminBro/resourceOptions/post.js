@@ -46,6 +46,15 @@ const postOptions = {
         new: true,
       },
     },
+    show: {
+      isVisible: {
+        list: false,
+        show: false,
+        filter: false,
+        edit: false,
+        new: false,
+      },
+    },
     content: { type: "richtext" },
     preview: {
       type: "richtext",
@@ -60,9 +69,16 @@ const postOptions = {
     bulkDelete: { isAccessible: canEditPost },
     new: {
       before: async (request, { currentAdmin }) => {
+        let show;
+        if (currentAdmin.editingPermissions.postsMustBeApprovedByAdmin) {
+          show = false;
+        } else {
+          show = true;
+        }
         request.payload = {
           ...request.payload,
           author: currentAdmin._id,
+          show: show,
         };
         return request;
       },
