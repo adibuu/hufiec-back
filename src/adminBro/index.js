@@ -53,6 +53,12 @@ const adminBro = new AdminBro({
   dashboard: {
     component: AdminBro.bundle("./components/dashboard.jsx"),
   },
+  pages: {
+    approveArticlesPage: {
+      label: "Test Page",
+      component: AdminBro.bundle("./components/approveArticles.jsx"),
+    },
+  },
   locale: i18nOptions,
 });
 

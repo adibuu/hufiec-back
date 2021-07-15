@@ -50,6 +50,9 @@ exports.postApprovePosts = async (req, res, next) => {
     const postsToApprove = req.body.postsToApprove;
     for (const p of postsToApprove) {
       const post = await Post.findById(p);
+      if (!post) {
+        createError("Could not find post", 404);
+      }
       post.show = true;
       await post.save();
     }

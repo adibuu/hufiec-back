@@ -1,5 +1,7 @@
-const { canEditPost } = require("../utils/accessCheck");
+const { canEditPost, isAdmin } = require("../utils/accessCheck");
 const sidebarGroups = require("../config/sidebarGroups");
+const Post = require("../../models/post");
+const AdminBro = require("admin-bro");
 
 const postOptions = {
   navigation: sidebarGroups.post,
@@ -48,9 +50,9 @@ const postOptions = {
     },
     show: {
       isVisible: {
-        list: false,
-        show: false,
-        filter: false,
+        list: true,
+        show: true,
+        filter: true,
         edit: false,
         new: false,
       },
@@ -82,6 +84,22 @@ const postOptions = {
         };
         return request;
       },
+    },
+    public: {
+      isAccessible: isAdmin,
+      isVisible: (context) => context.record.param("show") === false,
+      icon: "View",
+      actionType: "record",
+      handler: async (request, response, context) => {
+        const post = await Post.findById(context.record.param("_id"));
+        const p = context.record;
+        post.show = true;
+        await post.save();
+        return {
+          record: p.toJSON(context.currentAdmin),
+        };
+      },
+      component: AdminBro.bundle("../components/public.jsx"),
     },
   },
 };
