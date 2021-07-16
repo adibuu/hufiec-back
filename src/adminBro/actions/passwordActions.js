@@ -14,7 +14,7 @@ const before = async (request) => {
     if (!validator.isEmail(request.payload.email)) {
       throw new ValidationError({
         email: {
-          message: "Invalid email",
+          message: "Błędny email",
         },
       });
     }
@@ -22,7 +22,7 @@ const before = async (request) => {
       throw new ValidationError({
         password: {
           message:
-            "The password must contain a minimum of eight characters, at least one uppercase letter, one lowercase letter, one number and one special character.",
+            "Hasło musi zawierać co najmniej osiem znaków, co najmniej jedną wielką literę, jedną małą literę, jedną cyfrę i jeden znak specjalny.",
         },
       });
     }
@@ -30,7 +30,7 @@ const before = async (request) => {
     if (emailExists) {
       throw new ValidationError({
         email: {
-          message: "This email already exists!",
+          message: "Ten email jest już zajęty",
         },
       });
     }

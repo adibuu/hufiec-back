@@ -1,7 +1,8 @@
-const { canEditPost, isAdmin } = require("../utils/accessCheck");
-const sidebarGroups = require("../config/sidebarGroups");
 const Post = require("../../models/post");
 const AdminBro = require("admin-bro");
+const { NotFoundError } = require("admin-bro");
+const { canEditPost, isAdmin } = require("../utils/accessCheck");
+const sidebarGroups = require("../config/sidebarGroups");
 
 const postOptions = {
   navigation: sidebarGroups.post,
@@ -57,9 +58,25 @@ const postOptions = {
         new: false,
       },
     },
-    content: { type: "richtext" },
+    content: {
+      type: "richtext",
+      isVisible: {
+        list: false,
+        show: true,
+        filter: true,
+        edit: true,
+        new: true,
+      },
+    },
     preview: {
       type: "richtext",
+      isVisible: {
+        list: false,
+        show: true,
+        filter: true,
+        edit: true,
+        new: true,
+      },
       props: {
         quill: { modules: { toolbar: [["bold"], ["blockquote"]] } },
       },
@@ -91,7 +108,12 @@ const postOptions = {
       icon: "View",
       actionType: "record",
       handler: async (request, response, context) => {
-        const post = await Post.findById(context.record.param("_id"));
+        const post = await Post.findById(context.record.param("_id"))
+          .populate("author email")
+          .exec();
+        if (!post) {
+          throw new NotFoundError("", "Can't find this post");
+        }
         const p = context.record;
         post.show = true;
         await post.save();

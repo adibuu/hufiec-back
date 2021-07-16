@@ -7,6 +7,15 @@ const infoModalOptions = {
     _id: {
       isVisible: {
         list: false,
+        edit: false,
+        filter: false,
+        show: false,
+      },
+    },
+    content: {
+      type: "richtext",
+      props: {
+        quill: { modules: { toolbar: [["bold"], ["blockquote"]] } },
       },
     },
   },
@@ -17,14 +26,6 @@ const infoModalOptions = {
     edit: { isAccessible: canEditInfoModal },
     delete: { isAccessible: false },
     bulkDelete: { isAccessible: false },
-  },
-  properties: {
-    content: {
-      type: "richtext",
-      props: {
-        quill: { modules: { toolbar: [["bold"], ["blockquote"]] } },
-      },
-    },
   },
 };
 

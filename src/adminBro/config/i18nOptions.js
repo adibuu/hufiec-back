@@ -23,7 +23,7 @@ const i18nOptions = {
     },
     labels: {
       navigation: "Menu",
-      pages: "Strony",
+      pages: "Podstrony",
       selectedRecords: "Wybrano ({{selected}})",
       filters: "Filtry",
       adminVersion: "Admin: {{version}}",
@@ -133,6 +133,7 @@ const i18nOptions = {
       },
       Post: {
         properties: {
+          title: "Tytuł",
           author: "Autor",
           content: "Treść",
           preview: "Krótki opis",

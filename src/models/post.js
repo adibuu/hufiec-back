@@ -2,6 +2,13 @@ const mongoose = require("mongoose");
 const validator = require("validator");
 
 const postSchema = new mongoose.Schema({
+  title: {
+    type: String,
+    trim: true,
+    required: [true, "Tytuł jest wymagany"],
+    minLength: [5, "Tytuł musi mieć zakres od 5 do 50 znaków"],
+    maxLength: [50, "Tytuł musi mieć zakres od 5 do 50 znaków"],
+  },
   content: {
     type: String,
     trim: true,
