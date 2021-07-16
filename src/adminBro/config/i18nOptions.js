@@ -8,6 +8,7 @@ const i18nOptions = {
       delete: "Usuń",
       bulkDelete: "Usuń zaznaczone",
       list: "Lista danych",
+      public: "Opublikuj",
     },
     buttons: {
       save: "Zapisz",
@@ -22,7 +23,7 @@ const i18nOptions = {
     },
     labels: {
       navigation: "Menu",
-      pages: "Strony",
+      pages: "Podstrony",
       selectedRecords: "Wybrano ({{selected}})",
       filters: "Filtry",
       adminVersion: "Admin: {{version}}",
@@ -132,11 +133,14 @@ const i18nOptions = {
       },
       Post: {
         properties: {
+          title: "Tytuł",
+          author: "Autor",
           content: "Treść",
           preview: "Krótki opis",
           imageURL: "Adres URL do głównego obrazu artykułu",
           filesURL: "Adresy URL do załączanych plików",
           expireAt: "Data publikacji artykułu (domyślnie aktualna data)",
+          show: "Opublikowane na stronie",
         },
       },
       Contact: {

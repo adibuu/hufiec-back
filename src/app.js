@@ -54,6 +54,7 @@ const teamRouter = require("./routers/team");
 const errorHandler = require("./middleware/errorHandler");
 
 app.use(adminBro.options.rootPath, routerAdminBro);
+app.use(express.json());
 app.use(helmet());
 app.use(cors());
 app.use(limiter);

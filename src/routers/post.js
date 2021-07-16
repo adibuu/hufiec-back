@@ -1,12 +1,21 @@
 const express = require("express");
-const { getPosts, getPost } = require("../controllers/post");
+const {
+  getPosts,
+  getPost,
+  getPostsToCheck,
+  postApprovePosts,
+} = require("../controllers/post");
 const Post = require("../models/post");
-const paginatedResults = require("../middleware/paginatedResults");
+const paginatedPostsResults = require("../middleware/paginatedPostsResults");
 
 const router = express.Router();
 
-router.get("/posts", paginatedResults(Post), getPosts);
+router.get("/posts", paginatedPostsResults(Post), getPosts);
 
 router.get("/posts/:id", getPost);
+
+router.get("/check-posts", getPostsToCheck);
+
+router.post("/approve-posts", postApprovePosts);
 
 module.exports = router;
