@@ -140,7 +140,9 @@ const i18nOptions = {
           imageURL: "Adres URL do głównego obrazu artykułu",
           filesURL: "Adresy URL do załączanych plików",
           expireAt: "Data publikacji artykułu (domyślnie aktualna data)",
-          show: "Opublikowane na stronie",
+          show: "Opublikowany na stronie",
+          "show.true": "Tak",
+          "show.false": "Nie",
         },
       },
       Contact: {
@@ -168,6 +170,8 @@ const i18nOptions = {
         properties: {
           content: "Treść",
           show: "Wyświetl na stronie",
+          "show.true": "Tak",
+          "show.false": "Nie",
           expireAt: "Data wygaśnięcia alertu",
         },
       },
