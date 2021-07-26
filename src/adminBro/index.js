@@ -51,6 +51,23 @@ const adminBro = new AdminBro({
   loginPath: "/admin/login",
   branding: branding,
   dashboard: {
+    handler: async () => {
+      let postsToAccept = true;
+      let activeModal = true;
+      const posts = await Post.find({ show: false });
+      if (posts.length === 0) {
+        postsToAccept = false;
+      }
+      const modal = await InfoModal.find({ show: true });
+      if (modal.length === 0) {
+        activeModal = false;
+      }
+      return {
+        isPostsToAccept: postsToAccept,
+        postsToAcceptURL: process.env.ADMINBRO_CLIENT_URI,
+        isInfoModalActive: activeModal,
+      };
+    },
     component: AdminBro.bundle("./components/dashboard.jsx"),
   },
   locale: i18nOptions,
