@@ -139,7 +139,7 @@ const i18nOptions = {
           preview: "Krótki opis",
           imageURL: "Adres URL do głównego obrazu artykułu",
           filesURL: "Adresy URL do załączanych plików",
-          expireAt: "Data publikacji artykułu (domyślnie aktualna data)",
+          expireAt: "Data utworzenia artykułu",
           show: "Opublikowany na stronie",
           "show.true": "Tak",
           "show.false": "Nie",
