@@ -22,8 +22,6 @@ const Dashboard = () => {
     });
   }, []);
 
-  console.log(data);
-
   let content = <Loader />;
   let postsToAcceptBox = null;
   let activeInfoModalBox = null;
@@ -78,15 +76,6 @@ const Dashboard = () => {
           </Box>
         </Box>
       );
-      // } else {
-      //   content = (
-      //     <Box variant="grey">
-      //       <Box variant="card">
-      //         <Illustration variant="Folders" />
-      //         <Header.H4 fontWeight="bold">Panel administracyjny Hufca</Header.H4>
-      //       </Box>
-      //     </Box>
-      //   );
     }
   }
 
