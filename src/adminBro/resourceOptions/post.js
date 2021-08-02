@@ -45,8 +45,8 @@ const postOptions = {
         list: true,
         show: true,
         filter: true,
-        edit: true,
-        new: true,
+        edit: false,
+        new: false,
       },
     },
     show: {

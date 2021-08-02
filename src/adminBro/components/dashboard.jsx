@@ -67,7 +67,10 @@ const Dashboard = () => {
             <Header.H4 fontWeight="bold">
               Alert informacyjny jest włączony na stronie, możesz go wyłączyć{" "}
               <Link
-                href={data.postsToAcceptURL + "/admin/resources/InfoModal"}
+                href={
+                  data.postsToAcceptURL +
+                  "/admin/resources/InfoModal/records/60e348f0f6200a4cb41a2047/edit"
+                }
                 variant="info"
               >
                 TUTAJ
