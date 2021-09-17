@@ -33,6 +33,7 @@ function paginatedResults(model) {
     try {
       results.results = await model
         .find({ show: true })
+        .sort("-expireAt")
         .limit(limit)
         .skip(startIndex)
         .exec();
