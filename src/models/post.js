@@ -14,7 +14,7 @@ const postSchema = new mongoose.Schema({
     trim: true,
     required: [true, "Treść jest wymagana"],
     minLength: [12, "Treść musi mieć zakres od 5 do 300 znaków"],
-    maxLength: [350, "Treść musi mieć zakres od 5 do 300 znaków"],
+    // maxLength: [800, "Treść musi mieć zakres od 5 do 300 znaków"],
   },
   preview: {
     type: String,
