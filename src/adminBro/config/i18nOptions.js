@@ -128,7 +128,7 @@ const i18nOptions = {
           "contact.phone": "Telefon",
           "contact.facebookURL": "Link do strony na Facebooku",
           "contact.instagramURL": "Link do strony na Instagramie",
-          photosURL: "Linki do zdjęć",
+          photoURL: "Link do zdjęcia w tle",
         },
       },
       Post: {

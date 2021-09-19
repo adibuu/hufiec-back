@@ -12,7 +12,7 @@ const teamSchema = new mongoose.Schema({
     trim: true,
     required: [true, "Opis drużyny jest wymagany"],
     minLength: [12, "Opis drużyny musi mieć zakres od 5 do 300 znaków"],
-    maxLength: [350, "Opis drużyny musi mieć zakres od 5 do 300 znaków"],
+    // maxLength: [350, "Opis drużyny musi mieć zakres od 5 do 300 znaków"],
   },
   contact: {
     email: {
@@ -56,17 +56,15 @@ const teamSchema = new mongoose.Schema({
       },
     },
   },
-  photosURL: [
-    {
-      type: String,
-      required: false,
-      validate(value) {
-        if (!validator.isURL(value)) {
-          throw new Error("Błędny adres URL");
-        }
-      },
+  photoURL: {
+    type: String,
+    required: false,
+    validate(value) {
+      if (!validator.isURL(value)) {
+        throw new Error("Błędny adres URL");
+      }
     },
-  ],
+  },
 });
 
 module.exports = mongoose.model("Team", teamSchema);
