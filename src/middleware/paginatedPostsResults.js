@@ -7,7 +7,10 @@ function paginatedResults(model) {
       createError("Could not find resources.", 404);
     }
 
-    const page = parseInt(req.query.page);
+    let page = parseInt(req.query.page);
+
+    if (page <= 0) page = 1;
+
     const limit = parseInt(req.query.limit);
 
     const startIndex = (page - 1) * limit;
