@@ -1,7 +1,6 @@
 const branding = {
   companyName: "Hufiec",
-  logo: "https://ik.imagekit.io/lubien/Hufiec/hufiec_BPD8aFZUq.png",
-  favicon: "https://ik.imagekit.io/lubien/Hufiec/logo_3OFbKsfcN.png",
+  logo: false,
   softwareBrothers: false,
   theme: {
     colors: {

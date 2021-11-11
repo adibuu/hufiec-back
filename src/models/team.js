@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const validator = require("validator");
+const { convert } = require("html-to-text");
 
 const teamSchema = new mongoose.Schema({
   name: {
@@ -11,8 +11,13 @@ const teamSchema = new mongoose.Schema({
     type: String,
     trim: true,
     required: [true, "Opis drużyny jest wymagany"],
-    minLength: [12, "Opis drużyny musi mieć zakres od 5 do 300 znaków"],
-    // maxLength: [350, "Opis drużyny musi mieć zakres od 5 do 300 znaków"],
+    validate: {
+      validator: function (value) {
+        const text = convert(value, { wordwrap: false });
+        return text.length >= 5 && text.length <= 800;
+      },
+      message: "Opis drużyny musi mieć zakres od 5 do 800 znaków",
+    },
   },
   contact: {
     email: {
