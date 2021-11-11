@@ -27,14 +27,6 @@ const postOptions = {
         filter: true,
       },
     },
-    filesURL: {
-      isVisible: {
-        edit: true,
-        show: true,
-        list: false,
-        filter: true,
-      },
-    },
     _id: {
       isVisible: {
         list: false,
