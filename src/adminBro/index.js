@@ -71,6 +71,12 @@ const adminBro = new AdminBro({
     component: AdminBro.bundle("./components/dashboard.jsx"),
   },
   locale: i18nOptions,
+  pages: {
+    Generator_Rozkazów: {
+      label: "Generator rozkazów",
+      component: AdminBro.bundle("./components/orderGenerator.jsx"),
+    },
+  },
 });
 
 module.exports = adminBro;

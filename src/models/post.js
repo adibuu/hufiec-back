@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const validator = require("validator");
 const { convert } = require("html-to-text");
 
 const postSchema = new mongoose.Schema({
