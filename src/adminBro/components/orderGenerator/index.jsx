@@ -24,6 +24,10 @@ import {
 import OrdinancesAndInformation from "./OrdinancesAndInformation";
 import Troops from "./Troops";
 import ClustersTeams from "./ClustersTeams";
+import CirclesAndClubs from "./CirclesAndClubs";
+import TeamStrains from "./TeamStrains";
+import SummerAndWinter from "./SummerAndWinter";
+import InstructorAppoitmets from "./InstructorAppoitmets";
 
 const OrderGenerator = () => {
   const [currentAdmin] = useCurrentAdmin();
@@ -54,6 +58,10 @@ const OrderGenerator = () => {
     ordinancesAndInformation: false,
     troops: false,
     clustersTeams: false,
+    circlesAndClubs: false,
+    teamStrains: false,
+    summerAndWinter: false,
+    instructorAppointments: false,
   });
 
   return (
@@ -97,8 +105,10 @@ const OrderGenerator = () => {
                       rules={{ required: true }}
                       render={({ field: { onChange, value } }) => (
                         <Select
-                          onChange={onChange}
-                          value={value}
+                          onChange={(selectedValue) =>
+                            onChange(selectedValue.value)
+                          }
+                          value={options.find((c) => value === c.value)}
                           options={options}
                           placeholder="Wybierz numer rozkazu"
                         />
@@ -248,6 +258,92 @@ const OrderGenerator = () => {
                 {orderOptions.clustersTeams && (
                   <ScaleFade initialScale={0.7} in={orderOptions.clustersTeams}>
                     <ClustersTeams />
+                  </ScaleFade>
+                )}
+                <Divider />
+                <Flex>
+                  <FormLabel>4. Kręgi, kluby</FormLabel>
+                  <Switch
+                    colorScheme="green"
+                    isChecked={orderOptions.circlesAndClubs}
+                    onChange={() => {
+                      setOrderOptions({
+                        ...orderOptions,
+                        circlesAndClubs: !orderOptions.circlesAndClubs,
+                      });
+                    }}
+                  />
+                </Flex>
+                {orderOptions.circlesAndClubs && (
+                  <ScaleFade
+                    initialScale={0.7}
+                    in={orderOptions.circlesAndClubs}
+                  >
+                    <CirclesAndClubs />
+                  </ScaleFade>
+                )}
+                <Divider />
+                <Flex>
+                  <FormLabel>5. Szczepy, związki drużyn</FormLabel>
+                  <Switch
+                    colorScheme="green"
+                    isChecked={orderOptions.teamStrains}
+                    onChange={() => {
+                      setOrderOptions({
+                        ...orderOptions,
+                        teamStrains: !orderOptions.teamStrains,
+                      });
+                    }}
+                  />
+                </Flex>
+                {orderOptions.teamStrains && (
+                  <ScaleFade initialScale={0.7} in={orderOptions.teamStrains}>
+                    <TeamStrains />
+                  </ScaleFade>
+                )}
+                <Divider />
+                <Flex>
+                  <FormLabel>6. Harcerska Akcja Letnia i Zimowa</FormLabel>
+                  <Switch
+                    colorScheme="green"
+                    isChecked={orderOptions.summerAndWinter}
+                    onChange={() => {
+                      setOrderOptions({
+                        ...orderOptions,
+                        summerAndWinter: !orderOptions.summerAndWinter,
+                      });
+                    }}
+                  />
+                </Flex>
+                {orderOptions.summerAndWinter && (
+                  <ScaleFade
+                    initialScale={0.7}
+                    in={orderOptions.summerAndWinter}
+                  >
+                    <SummerAndWinter />
+                  </ScaleFade>
+                )}
+                <Divider />
+                <Flex>
+                  <FormLabel>7. Mianowania instruktorów</FormLabel>
+                  <Switch
+                    colorScheme="green"
+                    isChecked={orderOptions.instructorAppointments}
+                    onChange={() => {
+                      setOrderOptions({
+                        ...orderOptions,
+                        instructorAppointments:
+                          !orderOptions.instructorAppointments,
+                      });
+                    }}
+                  />
+                </Flex>
+                {orderOptions.instructorAppointments && (
+                  <ScaleFade
+                    initialScale={0.7}
+                    in={orderOptions.instructorAppointments}
+                  >
+                    <InstructorAppoitmets />
                   </ScaleFade>
                 )}
                 <Divider />
