@@ -113,7 +113,7 @@ const postOptions = {
           record: p.toJSON(context.currentAdmin),
         };
       },
-      component: AdminBro.bundle("../components/public.jsx"),
+      component: AdminBro.bundle("../components/Public.jsx"),
     },
   },
 };

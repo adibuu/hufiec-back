@@ -68,9 +68,15 @@ const adminBro = new AdminBro({
         isInfoModalActive: activeModal,
       };
     },
-    component: AdminBro.bundle("./components/dashboard.jsx"),
+    component: AdminBro.bundle("./components/Dashboard.jsx"),
   },
   locale: i18nOptions,
+  pages: {
+    Generator_Rozkazów: {
+      label: "Generator rozkazów",
+      component: AdminBro.bundle("./components/orderGenerator/index.jsx"),
+    },
+  },
 });
 
 module.exports = adminBro;
