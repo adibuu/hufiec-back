@@ -51,6 +51,7 @@ const galleryRouter = require("./routers/gallery");
 const infoModalRouter = require("./routers/infoModal");
 const postRouter = require("./routers/post");
 const teamRouter = require("./routers/team");
+const orderRouter = require("./routers/order");
 const errorHandler = require("./middleware/errorHandler");
 
 app.use(adminBro.options.rootPath, routerAdminBro);
@@ -64,6 +65,7 @@ app.use(galleryRouter);
 app.use(infoModalRouter);
 app.use(postRouter);
 app.use(teamRouter);
+app.use(orderRouter);
 app.use(errorHandler);
 
 app.listen(PORT, () => console.log("Server is running on " + PORT));

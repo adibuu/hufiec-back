@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from "axios";
 import { Box as AdminBroBox, DatePicker } from "@admin-bro/design-system";
 import { useCurrentAdmin } from "admin-bro";
 import { useForm, FormProvider, Controller } from "react-hook-form";
@@ -38,6 +39,9 @@ import Praise from "./Praise";
 import Other from "./Other";
 import Rectification from "./Rectification";
 
+const API_URL =
+  process.env.NODE_ENV === "production" ? "" : "http://localhost:3001";
+
 const OrderGenerator = () => {
   const [currentAdmin] = useCurrentAdmin();
   const methods = useForm();
@@ -48,8 +52,18 @@ const OrderGenerator = () => {
     formState: { errors, isSubmitting },
   } = methods;
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     console.log(data);
+
+    const response = await axios.post(API_URL + "/order", data, {
+      responseType: "blob",
+    });
+
+    const file = new Blob([response.data], { type: "application/pdf" });
+
+    const fileURL = URL.createObjectURL(file);
+
+    window.open(fileURL);
   };
 
   const options = [];
