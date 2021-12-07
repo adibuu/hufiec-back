@@ -23,6 +23,7 @@ import {
   HStack,
   Alert,
   AlertIcon,
+  Input,
 } from "@chakra-ui/react";
 import OrdinancesAndInformation from "./OrdinancesAndInformation";
 import Troops from "./Troops";
@@ -111,6 +112,7 @@ const OrderGenerator = () => {
                               value={value}
                               locale={pl}
                               ref={ref}
+                              propertyType="date"
                             />
                           )}
                         />
@@ -145,6 +147,19 @@ const OrderGenerator = () => {
                         )}
                       </FormControl>
                     </HStack>
+                    <FormControl isRequired>
+                      <FormLabel>Miejscowość</FormLabel>
+                      <Input
+                        {...register("town", {
+                          required: true,
+                        })}
+                      />
+                      {errors.troopsName && (
+                        <FormErrorMessage>
+                          To pole jest wymagane
+                        </FormErrorMessage>
+                      )}
+                    </FormControl>
                     <FormControl isRequired>
                       <FormLabel>Nazwa Hufca</FormLabel>
                       <Textarea

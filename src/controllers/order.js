@@ -1,10 +1,27 @@
 const PDFDocument = require("pdfkit");
 
+const months = [
+  "Styczeń",
+  "Luty",
+  "Marzec",
+  "Kwiecień",
+  "Maj",
+  "Czerwiec",
+  "Lipiec",
+  "Sierpień",
+  "Wrzesień",
+  "Październik",
+  "Listopad",
+  "Grudzień",
+];
+
 exports.postOrder = async (req, res, next) => {
   try {
     const data = req.body;
 
-    const doc = new PDFDocument();
+    const doc = new PDFDocument({
+      size: "A4",
+    });
     const filename = "rozkaz";
 
     res.setHeader("Content-type", "application/pdf");
@@ -13,9 +30,19 @@ exports.postOrder = async (req, res, next) => {
       "inline; filename=" + filename + ".pdf"
     );
 
-    doc.info["Title"] = filename;
+    const fontpath = __dirname + "/../fonts/Roboto-Regular.ttf";
 
-    doc.fontSize(26).text(data.troopsName);
+    doc.info["Title"] = filename;
+    doc.font(fontpath);
+
+    const splitDate = data.orderDate.split("-");
+    const year = splitDate[0];
+    const month = parseInt(splitDate[1]) - 1;
+    const day = splitDate[2];
+
+    doc.fontSize(10).text(`${data.town}, ${day} ${months[month]} ${year} r.`, {
+      align: "right",
+    });
 
     doc.pipe(res);
     doc.end();
