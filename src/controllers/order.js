@@ -452,7 +452,7 @@ exports.postOrder = async (req, res, next) => {
     }
 
     //Summer and winter action
-    if (data.appoitmentsHALIZ.length > 0) {
+    if (data.appoitmentsHALIZ) {
       doc
         .fontSize(10)
         .font(__dirname + "/../fonts/Roboto-Bold.ttf")
