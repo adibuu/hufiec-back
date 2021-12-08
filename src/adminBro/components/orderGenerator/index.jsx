@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from "axios";
 import { Box as AdminBroBox, DatePicker } from "@admin-bro/design-system";
 import { useCurrentAdmin } from "admin-bro";
 import { useForm, FormProvider, Controller } from "react-hook-form";
@@ -22,6 +23,7 @@ import {
   HStack,
   Alert,
   AlertIcon,
+  Input,
 } from "@chakra-ui/react";
 import OrdinancesAndInformation from "./OrdinancesAndInformation";
 import Troops from "./Troops";
@@ -38,6 +40,9 @@ import Praise from "./Praise";
 import Other from "./Other";
 import Rectification from "./Rectification";
 
+const API_URL =
+  process.env.NODE_ENV === "production" ? "" : "http://localhost:3001";
+
 const OrderGenerator = () => {
   const [currentAdmin] = useCurrentAdmin();
   const methods = useForm();
@@ -47,10 +52,6 @@ const OrderGenerator = () => {
     handleSubmit,
     formState: { errors, isSubmitting },
   } = methods;
-
-  const onSubmit = (data) => {
-    console.log(data);
-  };
 
   const options = [];
   for (let i = 1; i <= 30; i++) {
@@ -69,6 +70,44 @@ const OrderGenerator = () => {
     instructorAppointments: false,
     allocationService: false,
   });
+
+  const onSubmit = async (data) => {
+    const dataToSend = {
+      ...data,
+      occasionalAdmission: orderOptions.occasionalAdmission
+        ? data.occasionalAdmission
+        : null,
+      orderExceptions: orderOptions.orderExceptions
+        ? data.orderExceptions
+        : null,
+      ordinancesAndInformation: orderOptions.ordinancesAndInformation
+        ? data.ordinancesAndInformation
+        : null,
+      troops: orderOptions.troops ? data.troops : null,
+      clustersTeams: orderOptions.clustersTeams ? data.clustersTeams : null,
+      circlesAndClubs: orderOptions.circlesAndClubs
+        ? data.circlesAndClubs
+        : null,
+      teamStrains: orderOptions.teamStrains ? data.teamStrains : null,
+      summerAndWinter: orderOptions.summerAndWinter
+        ? data.summerAndWinter
+        : null,
+      instructorAppointments: orderOptions.instructorAppointments
+        ? data.instructorAppointments
+        : null,
+      allocationService: orderOptions.allocationService
+        ? data.allocationService
+        : null,
+    };
+
+    const response = await axios.post(API_URL + "/order", dataToSend, {
+      responseType: "blob",
+    });
+    const file = new Blob([response.data], { type: "application/pdf" });
+    const fileURL = URL.createObjectURL(file);
+
+    window.open(fileURL);
+  };
 
   return (
     <ChakraProvider>
@@ -97,6 +136,7 @@ const OrderGenerator = () => {
                               value={value}
                               locale={pl}
                               ref={ref}
+                              propertyType="date"
                             />
                           )}
                         />
@@ -131,6 +171,19 @@ const OrderGenerator = () => {
                         )}
                       </FormControl>
                     </HStack>
+                    <FormControl isRequired>
+                      <FormLabel>Miejscowość</FormLabel>
+                      <Input
+                        {...register("town", {
+                          required: true,
+                        })}
+                      />
+                      {errors.troopsName && (
+                        <FormErrorMessage>
+                          To pole jest wymagane
+                        </FormErrorMessage>
+                      )}
+                    </FormControl>
                     <FormControl isRequired>
                       <FormLabel>Nazwa Hufca</FormLabel>
                       <Textarea
