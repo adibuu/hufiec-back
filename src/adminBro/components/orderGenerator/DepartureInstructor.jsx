@@ -14,12 +14,12 @@ const DepartureInstructor = () => {
   const { register, control } = useFormContext();
 
   const {
-    fields: departureInstrucotrFields,
-    append: departureInstrucotrAppend,
-    remove: departureInstrucotrRemove,
+    fields: departureInstructorFields,
+    append: departureInstructorAppend,
+    remove: departureInstructorRemove,
   } = useFieldArray({
     control,
-    name: "departureInstrucotr",
+    name: "departureInstructor",
   });
 
   return (
@@ -35,10 +35,10 @@ const DepartureInstructor = () => {
           h={6}
           color="green.500"
           _hover={{ color: "green.300", cursor: "pointer" }}
-          onClick={() => departureInstrucotrAppend({ content: "" })}
+          onClick={() => departureInstructorAppend({ content: "" })}
         />
       </HStack>
-      {departureInstrucotrFields.map((item, index) => (
+      {departureInstructorFields.map((item, index) => (
         <Box key={item.id} p={3}>
           <HStack mb={3}>
             <Text fontSize="md">
@@ -52,10 +52,10 @@ const DepartureInstructor = () => {
               h={5}
               color="red.500"
               _hover={{ color: "red.300", cursor: "pointer" }}
-              onClick={() => departureInstrucotrRemove(index)}
+              onClick={() => departureInstructorRemove(index)}
             />
           </HStack>
-          <Textarea {...register(`departureInstrucotr.${index}.content`)} />
+          <Textarea {...register(`departureInstructor.${index}.content`)} />
         </Box>
       ))}
     </SimpleGrid>
