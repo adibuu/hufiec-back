@@ -43,7 +43,6 @@ const routerAdminBro = AdminBroExpress.buildAuthenticatedRouter(
 );
 
 const app = express();
-const PORT = process.env.PORT || 3001;
 
 const contactRouter = require("./routers/contact");
 const documentRouter = require("./routers/document");
@@ -67,7 +66,5 @@ app.use(postRouter);
 app.use(teamRouter);
 app.use(orderRouter);
 app.use(errorHandler);
-
-app.listen(PORT, () => console.log("Server is running on " + PORT));
 
 module.exports = app;

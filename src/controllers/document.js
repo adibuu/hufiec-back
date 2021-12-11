@@ -4,9 +4,11 @@ const createError = require("../utils/createError");
 exports.getDocument = async (req, res, next) => {
   try {
     const document = await Document.find({});
-    if (!document) {
+
+    if (document.length === 0) {
       createError("Could not find documents data!", 404);
     }
+
     return res.status(200).send(document);
   } catch (error) {
     if (!error.statusCode) {

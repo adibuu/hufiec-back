@@ -4,6 +4,10 @@ const readingTime = require("reading-time");
 
 exports.getPosts = async (req, res, next) => {
   try {
+    if (res.paginatedResults.documentsAmount === 0) {
+      createError("Could not find posts", 404);
+    }
+
     return res.status(200).send(res.paginatedResults);
   } catch (error) {
     if (!error.statusCode) {

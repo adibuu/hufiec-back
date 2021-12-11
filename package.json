@@ -4,9 +4,12 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "jest",
-    "start": "node ./src/app.js",
-    "dev": "nodemon ./src/app.js"
+    "start": "node ./src/index.js",
+    "dev": "dotenv -e .env.dev nodemon ./src/index.js",
+    "test": "dotenv -e .env.test jest"
+  },
+  "jest": {
+    "testEnvironment": "node"
   },
   "repository": {
     "type": "git",
@@ -30,6 +33,7 @@
     "cors": "^2.8.5",
     "date-fns": "^2.26.0",
     "dotenv": "^10.0.0",
+    "dotenv-cli": "^4.1.1",
     "express": "^4.17.1",
     "express-formidable": "^1.2.0",
     "express-rate-limit": "^5.2.6",
