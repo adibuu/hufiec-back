@@ -1,3 +1,4 @@
+const createError = require("../utils/createError");
 const PDFDocument = require("pdfkit");
 
 const months = [
@@ -18,6 +19,19 @@ const months = [
 exports.postOrder = async (req, res, next) => {
   try {
     const data = req.body;
+
+    if (
+      !data.orderDate ||
+      !data.orderNumber ||
+      !data.town ||
+      !data.troopsName
+    ) {
+      createError(
+        "Cannot create order pdf without one of this data: date, order number, town, troops name.",
+        400
+      );
+    }
+
     const defaultFontPath = __dirname + "/../fonts/Roboto-Regular.ttf";
 
     const splitDate = data.orderDate.split("-");
@@ -624,7 +638,7 @@ exports.postOrder = async (req, res, next) => {
     }
 
     //Pass service
-    if (data.passService.length > 0) {
+    if (data.passService?.length > 0) {
       doc
         .fontSize(10)
         .font(__dirname + "/../fonts/Roboto-Bold.ttf")
@@ -700,7 +714,7 @@ exports.postOrder = async (req, res, next) => {
     }
 
     //Departure instructor
-    if (data.departureInstructor.length > 0) {
+    if (data.departureInstructor?.length > 0) {
       doc
         .fontSize(10)
         .font(__dirname + "/../fonts/Roboto-Bold.ttf")
@@ -725,7 +739,7 @@ exports.postOrder = async (req, res, next) => {
     }
 
     //Penalties
-    if (data.penalties.length > 0) {
+    if (data.penalties?.length > 0) {
       doc
         .fontSize(10)
         .font(__dirname + "/../fonts/Roboto-Bold.ttf")
@@ -747,7 +761,7 @@ exports.postOrder = async (req, res, next) => {
     }
 
     //Praise
-    if (data.praise.length > 0) {
+    if (data.praise?.length > 0) {
       doc
         .fontSize(10)
         .font(__dirname + "/../fonts/Roboto-Bold.ttf")
@@ -769,7 +783,7 @@ exports.postOrder = async (req, res, next) => {
     }
 
     //Other
-    if (data.other.length > 0) {
+    if (data.other?.length > 0) {
       doc
         .fontSize(10)
         .font(__dirname + "/../fonts/Roboto-Bold.ttf")
@@ -791,7 +805,7 @@ exports.postOrder = async (req, res, next) => {
     }
 
     //Rectification
-    if (data.rectification.length > 0) {
+    if (data.rectification?.length > 0) {
       doc
         .fontSize(10)
         .font(__dirname + "/../fonts/Roboto-Bold.ttf")
