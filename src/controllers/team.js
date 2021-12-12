@@ -5,7 +5,7 @@ exports.getTeams = async (req, res, next) => {
   try {
     const teams = await Team.find({});
 
-    if (!teams) {
+    if (teams.length === 0) {
       createError("Could not find teams", 404);
     }
     return res.status(200).send(teams);
