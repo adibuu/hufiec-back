@@ -93,7 +93,7 @@ exports.postOrder = async (req, res, next) => {
     let counter = 1;
 
     //Ordinances and informations
-    if (data.ordinances || data.information) {
+    if (data.ordinances?.length > 0 || data.information?.length > 0) {
       doc
         .fontSize(10)
         .font(__dirname + "/../fonts/Roboto-Bold.ttf")
@@ -101,7 +101,7 @@ exports.postOrder = async (req, res, next) => {
 
       let subCounter = 1;
 
-      if (data.ordinances.length > 0) {
+      if (data.ordinances?.length > 0) {
         doc
           .fontSize(10)
           .font(__dirname + "/../fonts/Roboto-Bold.ttf")
@@ -120,7 +120,7 @@ exports.postOrder = async (req, res, next) => {
         subCounter = subCounter + 1;
       }
 
-      if (data.information.length > 0) {
+      if (data.information?.length > 0) {
         doc
           .fontSize(10)
           .font(__dirname + "/../fonts/Roboto-Bold.ttf")
@@ -142,7 +142,11 @@ exports.postOrder = async (req, res, next) => {
     }
 
     //Troop
-    if (data.troopLayoffs || data.troopAppointment || data.troopVocation) {
+    if (
+      data.troopLayoffs?.length > 0 ||
+      data.troopAppointment?.length > 0 ||
+      data.troopVocation?.length > 0
+    ) {
       doc
         .fontSize(10)
         .font(__dirname + "/../fonts/Roboto-Bold.ttf")
@@ -150,7 +154,7 @@ exports.postOrder = async (req, res, next) => {
 
       let subCounter = 1;
 
-      if (data.troopLayoffs.length > 0) {
+      if (data.troopLayoffs?.length > 0) {
         doc
           .fontSize(10)
           .font(__dirname + "/../fonts/Roboto-Bold.ttf")
@@ -171,7 +175,7 @@ exports.postOrder = async (req, res, next) => {
         subCounter = subCounter + 1;
       }
 
-      if (data.troopAppointment.length > 0) {
+      if (data.troopAppointment?.length > 0) {
         doc
           .fontSize(10)
           .font(__dirname + "/../fonts/Roboto-Bold.ttf")
@@ -192,7 +196,7 @@ exports.postOrder = async (req, res, next) => {
         subCounter = subCounter + 1;
       }
 
-      if (data.troopVocation.length > 0) {
+      if (data.troopVocation?.length > 0) {
         doc
           .fontSize(10)
           .font(__dirname + "/../fonts/Roboto-Bold.ttf")
@@ -221,9 +225,9 @@ exports.postOrder = async (req, res, next) => {
 
     //Clusters, teams
     if (
-      data.givingNames ||
-      data.organizationalChanges ||
-      data.dismissalsAndTeamAppointments
+      data.givingNames?.length > 0 ||
+      data.organizationalChanges?.length > 0 ||
+      data.dismissalsAndTeamAppointments?.length > 0
     ) {
       doc
         .fontSize(10)
@@ -232,7 +236,7 @@ exports.postOrder = async (req, res, next) => {
 
       let subCounter = 1;
 
-      if (data.givingNames.length > 0) {
+      if (data.givingNames?.length > 0) {
         doc
           .fontSize(10)
           .font(__dirname + "/../fonts/Roboto-Bold.ttf")
@@ -253,7 +257,7 @@ exports.postOrder = async (req, res, next) => {
         subCounter = subCounter + 1;
       }
 
-      if (data.organizationalChanges.length > 0) {
+      if (data.organizationalChanges?.length > 0) {
         doc
           .fontSize(10)
           .font(__dirname + "/../fonts/Roboto-Bold.ttf")
@@ -274,7 +278,7 @@ exports.postOrder = async (req, res, next) => {
         subCounter = subCounter + 1;
       }
 
-      if (data.dismissalsAndTeamAppointments.length > 0) {
+      if (data.dismissalsAndTeamAppointments?.length > 0) {
         doc
           .fontSize(10)
           .font(__dirname + "/../fonts/Roboto-Bold.ttf")
@@ -303,9 +307,9 @@ exports.postOrder = async (req, res, next) => {
 
     //Circles, clubs
     if (
-      data.givingNamesCirclesAndClubs ||
-      data.appointmentCircles ||
-      data.dismissalsAndTeamAppointmentsCircles
+      data.givingNamesCirclesAndClubs?.length > 0 ||
+      data.appointmentCircles?.length > 0 ||
+      data.dismissalsAndTeamAppointmentsCircles?.length > 0
     ) {
       doc
         .fontSize(10)
@@ -314,7 +318,7 @@ exports.postOrder = async (req, res, next) => {
 
       let subCounter = 1;
 
-      if (data.givingNamesCirclesAndClubs.length > 0) {
+      if (data.givingNamesCirclesAndClubs?.length > 0) {
         doc
           .fontSize(10)
           .font(__dirname + "/../fonts/Roboto-Bold.ttf")
@@ -335,7 +339,7 @@ exports.postOrder = async (req, res, next) => {
         subCounter = subCounter + 1;
       }
 
-      if (data.appointmentCircles.length > 0) {
+      if (data.appointmentCircles?.length > 0) {
         doc
           .fontSize(10)
           .font(__dirname + "/../fonts/Roboto-Bold.ttf")
@@ -356,7 +360,7 @@ exports.postOrder = async (req, res, next) => {
         subCounter = subCounter + 1;
       }
 
-      if (data.dismissalsAndTeamAppointmentsCircles.length > 0) {
+      if (data.dismissalsAndTeamAppointmentsCircles?.length > 0) {
         doc
           .fontSize(10)
           .font(__dirname + "/../fonts/Roboto-Bold.ttf")
@@ -382,9 +386,9 @@ exports.postOrder = async (req, res, next) => {
 
     //Team strains
     if (
-      data.givingNamesTeamStrains ||
-      data.appointmentTeamStrains ||
-      data.dismissalsAndTeamAppointmentsTeamStrains
+      data.givingNamesTeamStrains?.length > 0 ||
+      data.appointmentTeamStrains?.length > 0 ||
+      data.dismissalsAndTeamAppointmentsTeamStrains?.length > 0
     ) {
       doc
         .fontSize(10)
@@ -393,7 +397,7 @@ exports.postOrder = async (req, res, next) => {
 
       let subCounter = 1;
 
-      if (data.givingNamesTeamStrains.length > 0) {
+      if (data.givingNamesTeamStrains?.length > 0) {
         doc
           .fontSize(10)
           .font(__dirname + "/../fonts/Roboto-Bold.ttf")
@@ -414,7 +418,7 @@ exports.postOrder = async (req, res, next) => {
         subCounter = subCounter + 1;
       }
 
-      if (data.appointmentTeamStrains.length > 0) {
+      if (data.appointmentTeamStrains?.length > 0) {
         doc
           .fontSize(10)
           .font(__dirname + "/../fonts/Roboto-Bold.ttf")
@@ -438,7 +442,7 @@ exports.postOrder = async (req, res, next) => {
         subCounter = subCounter + 1;
       }
 
-      if (data.dismissalsAndTeamAppointmentsTeamStrains.length > 0) {
+      if (data.dismissalsAndTeamAppointmentsTeamStrains?.length > 0) {
         doc
           .fontSize(10)
           .font(__dirname + "/../fonts/Roboto-Bold.ttf")
@@ -466,7 +470,7 @@ exports.postOrder = async (req, res, next) => {
     }
 
     //Summer and winter action
-    if (data.appoitmentsHALIZ) {
+    if (data.appoitmentsHALIZ?.length > 0) {
       doc
         .fontSize(10)
         .font(__dirname + "/../fonts/Roboto-Bold.ttf")
@@ -476,7 +480,7 @@ exports.postOrder = async (req, res, next) => {
 
       let subCounter = 1;
 
-      if (data.appoitmentsHALIZ.length > 0) {
+      if (data.appoitmentsHALIZ?.length > 0) {
         doc
           .fontSize(10)
           .font(__dirname + "/../fonts/Roboto-Bold.ttf")
@@ -504,11 +508,11 @@ exports.postOrder = async (req, res, next) => {
 
     //Instructor appoitments
     if (
-      data.closeGuideAttempt ||
-      data.openGuideAttempt ||
-      data.closeScoutmasterAttempt ||
-      data.openScoutmasterAttempt ||
-      data.instructorReception
+      data.closeGuideAttempt?.length > 0 ||
+      data.openGuideAttempt?.length > 0 ||
+      data.closeScoutmasterAttempt?.length > 0 ||
+      data.openScoutmasterAttempt?.length > 0 ||
+      data.instructorReception?.length > 0
     ) {
       doc
         .fontSize(10)
@@ -517,7 +521,7 @@ exports.postOrder = async (req, res, next) => {
 
       let subCounter = 1;
 
-      if (data.closeGuideAttempt.length > 0) {
+      if (data.closeGuideAttempt?.length > 0) {
         doc
           .fontSize(10)
           .font(__dirname + "/../fonts/Roboto-Bold.ttf")
@@ -541,7 +545,7 @@ exports.postOrder = async (req, res, next) => {
         subCounter = subCounter + 1;
       }
 
-      if (data.openGuideAttempt.length > 0) {
+      if (data.openGuideAttempt?.length > 0) {
         doc
           .fontSize(10)
           .font(__dirname + "/../fonts/Roboto-Bold.ttf")
@@ -565,7 +569,7 @@ exports.postOrder = async (req, res, next) => {
         subCounter = subCounter + 1;
       }
 
-      if (data.closeScoutmasterAttempt.length > 0) {
+      if (data.closeScoutmasterAttempt?.length > 0) {
         doc
           .fontSize(10)
           .font(__dirname + "/../fonts/Roboto-Bold.ttf")
@@ -589,7 +593,7 @@ exports.postOrder = async (req, res, next) => {
         subCounter = subCounter + 1;
       }
 
-      if (data.openScoutmasterAttempt.length > 0) {
+      if (data.openScoutmasterAttempt?.length > 0) {
         doc
           .fontSize(10)
           .font(__dirname + "/../fonts/Roboto-Bold.ttf")
@@ -613,7 +617,7 @@ exports.postOrder = async (req, res, next) => {
         subCounter = subCounter + 1;
       }
 
-      if (data.instructorReception.length > 0) {
+      if (data.instructorReception?.length > 0) {
         doc
           .fontSize(10)
           .font(__dirname + "/../fonts/Roboto-Bold.ttf")
@@ -660,7 +664,10 @@ exports.postOrder = async (req, res, next) => {
     }
 
     //Allocation service
-    if (data.obtainAllocation || data.changeAllocation) {
+    if (
+      data.obtainAllocation?.length > 0 ||
+      data.changeAllocation?.length > 0
+    ) {
       doc
         .fontSize(10)
         .font(__dirname + "/../fonts/Roboto-Bold.ttf")
@@ -668,7 +675,7 @@ exports.postOrder = async (req, res, next) => {
 
       let subCounter = 1;
 
-      if (data.obtainAllocation.length > 0) {
+      if (data.obtainAllocation?.length > 0) {
         doc
           .fontSize(10)
           .font(__dirname + "/../fonts/Roboto-Bold.ttf")
@@ -690,7 +697,7 @@ exports.postOrder = async (req, res, next) => {
         subCounter = subCounter + 1;
       }
 
-      if (data.changeAllocation.length > 0) {
+      if (data.changeAllocation?.length > 0) {
         doc
           .fontSize(10)
           .font(__dirname + "/../fonts/Roboto-Bold.ttf")
